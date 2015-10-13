@@ -1,18 +1,36 @@
 package br.com.aline.votenorestaurante.model;
 
-import javax.persistence.FetchType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-public class Ranking {
+@Entity
+public class Ranking implements Entidade{
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="restauranteId", nullable = false)
+	@Id
+	@GeneratedValue
+	private Long id; 
+	
+	@ManyToOne(optional = false, targetEntity=Restaurante.class)
+	@JoinColumn(name="restauranteId", referencedColumnName="id")
 	private Restaurante restaurante;
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="usuarioId", nullable = false)
+	
+	@ManyToOne(optional = false, targetEntity=Usuario.class)
+	@JoinColumn(name="usuarioId", referencedColumnName="id")
 	private Usuario usuario; 
 	private Integer votos;
+	
+	@Override
+	public Long getId() {
+		return id;
+	}
+	@Override
+	public void setId(Long id) {
+		this.id = id;
+	} 
+	
 	public Restaurante getRestaurante() {
 		return restaurante;
 	}
@@ -30,6 +48,5 @@ public class Ranking {
 	}
 	public void setVotos(Integer votos) {
 		this.votos = votos;
-	} 
-
+	}
 }

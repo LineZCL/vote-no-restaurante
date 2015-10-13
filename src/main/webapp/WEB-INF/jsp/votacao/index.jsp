@@ -1,10 +1,15 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>VRaptor Blank Project</title>
-</head>
+<%@ include file="../header.jsp" %>
 <body>
-	It works!! ${variable} ${linkTo[IndexController].index}
+	  <form method="post" action="${linkTo[VotacaoController].votar}">
+		
+		<c:forEach items="${restauranteList}" var="restaurante">
+		    <input type="radio" name="restauranteId" value="${restaurante.id}"/>
+		    <p>${restaurante.nome }</p>
+		</c:forEach>
+	    <input type="submit" value="Votar" />
+	</form>
+	<ul>
+		
+	</ul>
 </body>
 </html>

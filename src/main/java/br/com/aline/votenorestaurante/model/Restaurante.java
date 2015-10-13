@@ -2,20 +2,29 @@ package br.com.aline.votenorestaurante.model;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-public class Restaurante {
+@Entity
+public class Restaurante implements Entidade{
 	
+	@Id
+	@GeneratedValue
 	private Long id; 
 	private String nome;
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "restaurante")
+	@OneToMany(mappedBy = "restaurante", targetEntity = Ranking.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private Set<Ranking> rankings; 
 	
+	@Override
 	public Long getId() {
 		return id;
 	}
+	@Override
 	public void setId(Long id) {
 		this.id = id;
 	}
@@ -30,6 +39,12 @@ public class Restaurante {
 	}
 	public void setRankings(Set<Ranking> rankings) {
 		this.rankings = rankings;
+	}
+	
+	@Override
+	public boolean equals(Object obj){
+		Restaurante restaurante = (Restaurante) obj; 
+		return this == restaurante || this.id == restaurante.getId(); 
 	}
 
 }
