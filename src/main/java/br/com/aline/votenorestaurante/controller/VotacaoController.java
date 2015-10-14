@@ -13,9 +13,7 @@ import br.com.aline.votenorestaurante.model.Usuario;
 import br.com.aline.votenorestaurante.sessionComponent.ListaCartaoVoto;
 import br.com.aline.votenorestaurante.sessionComponent.ListaRankingUsuario;
 import br.com.caelum.vraptor.Controller;
-import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
-import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Result;
 
 @Controller
@@ -48,7 +46,6 @@ public class VotacaoController {
 	}
 
 	@Path("")
-	@Get
 	public List<Restaurante> index() {
 		if (cartoesVotos.getCartoes() == null) {
 			cartoesVotos.inicializaLista(restauranteDao);
@@ -56,7 +53,8 @@ public class VotacaoController {
 		return cartoesVotos.buscaRestaurantes();
 	}
 
-	@Post
+	
+	@Path("/votar")
 	public void votar(Long restauranteId) {
 		if (restauranteId != null) {
 			Restaurante restaurante = restauranteDao.buscaPorId(
@@ -64,7 +62,7 @@ public class VotacaoController {
 			if (restaurante != null) {
 				listaRankingUsuario.adicionaVoto(restaurante);
 				if (cartoesVotos.terminouRestaurantes()) {
-					result.redirectTo(this).finalizarVotacao();
+					result.redirectTo(this).newUser();
 				}
 				else{
 					result.redirectTo(this).index();
@@ -77,11 +75,11 @@ public class VotacaoController {
 		
 	}
 
-	@Get
-	public void finalizarVotacao() {
+	@Path("/newUser")
+	public void newUser() {
 	}
 
-	@Post
+	@Path("/finalizarVotacao")
 	public void finalizarVotacao(Usuario usuario) {
 		usuario = usuarioDao.criar(usuario);
 

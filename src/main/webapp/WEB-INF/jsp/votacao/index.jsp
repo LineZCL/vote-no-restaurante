@@ -1,10 +1,10 @@
 <%@ include file="../header.jsp" %>
-<body>
+<body>	
 	<div class="principalDiv">
 		<div class="panel panel-default">
 			<div class="panel-heading">Qual seu restaurante favorito?</div>
 		  	<div class="panel-body">
-		    	<form method="post" action="<c:url value='//votar'/>">
+		    	<form action="/votar" method="post" >
 					<c:forEach items="${restauranteList}" var="restaurante">
 						<div class="opcRestaurantes">
 							<div class="input-group">
