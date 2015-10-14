@@ -1,28 +1,37 @@
 <%@ include file="../header.jsp" %>
 <body>
-	<table style="width: 100%; border: 1px solid #D8D8D8;"
-		id="rankingGeral">
-		<thead>
-			<tr>
-				<th>Restaurante</th>
-				<th>Votos</th>
-			</tr>
-		</thead>
-		<tbody>
-		</tbody>
-	</table>
-
-	<table style="width: 100%; border: 1px solid #D8D8D8;"
-		id="rankingUsuario">
-		<thead>
-			<tr>
-				<th>Restaurante</th>
-				<th>Votos</th>
-			</tr>
-		</thead>
-		<tbody>
-		</tbody>
-	</table>
+	<div class="principalDiv">
+		<div class="panel panel-default panel-Ranking">
+			<div class="panel-heading">Ranking Geral</div>
+			<div class="panel-body">
+				<table id="rankingGeral" class="table">
+					<thead>
+						<tr>
+							<th>Restaurante</th>
+							<th>Votos</th>
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="panel panel-default panel-Ranking">
+			<div class="panel-heading">Seu ranking</div>
+			<div class="panel-body">
+				<table id="rankingUsuario" class="table">
+					<thead>
+						<tr>
+							<th>Restaurante</th>
+							<th>Votos</th>
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
 
 
 	<script type="text/javascript">

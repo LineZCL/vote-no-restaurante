@@ -19,7 +19,7 @@ import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Result;
 
 @Controller
-@Path("/")
+@Path("")
 public class VotacaoController {
 
 	private RestauranteDAO restauranteDao;
@@ -58,14 +58,23 @@ public class VotacaoController {
 
 	@Post
 	public void votar(Long restauranteId) {
-		Restaurante restaurante = restauranteDao.buscaPorId(Restaurante.class,
-				restauranteId);
-		listaRankingUsuario.adicionaVoto(restaurante);
-		if (cartoesVotos.terminouRestaurantes()) {
-			result.redirectTo(this).finalizarVotacao();
-		} else {
+		if (restauranteId != null) {
+			Restaurante restaurante = restauranteDao.buscaPorId(
+					Restaurante.class, restauranteId);
+			if (restaurante != null) {
+				listaRankingUsuario.adicionaVoto(restaurante);
+				if (cartoesVotos.terminouRestaurantes()) {
+					result.redirectTo(this).finalizarVotacao();
+				}
+				else{
+					result.redirectTo(this).index();
+				}
+			}
+		}
+		else{
 			result.redirectTo(this).index();
 		}
+		
 	}
 
 	@Get

@@ -12,6 +12,14 @@ import javax.persistence.OneToMany;
 @Entity
 public class Restaurante implements Entidade{
 	
+	public Restaurante() {
+		
+	}
+	
+	public Restaurante(String nome) {
+		this.nome = nome; 
+	}
+	
 	@Id
 	@GeneratedValue
 	private Long id; 

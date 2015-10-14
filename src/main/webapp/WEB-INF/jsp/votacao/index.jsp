@@ -1,15 +1,24 @@
 <%@ include file="../header.jsp" %>
 <body>
-	  <form method="post" action="${linkTo[VotacaoController].votar}">
-		
-		<c:forEach items="${restauranteList}" var="restaurante">
-		    <input type="radio" name="restauranteId" value="${restaurante.id}"/>
-		    <p>${restaurante.nome }</p>
-		</c:forEach>
-	    <input type="submit" value="Votar" />
-	</form>
-	<ul>
-		
-	</ul>
+	<div class="principalDiv">
+		<div class="panel panel-default">
+			<div class="panel-heading">Qual seu restaurante favorito?</div>
+		  	<div class="panel-body">
+		    	<form method="post" action="<c:url value='//votar'/>">
+					<c:forEach items="${restauranteList}" var="restaurante">
+						<div class="opcRestaurantes">
+							<div class="input-group">
+						    	<span class="input-group-addon">
+						        	<input type="radio" name="restauranteId" value="${restaurante.id}">
+						      	</span>
+						      	<input type="text" class="form-control" value="${restaurante.nome }">
+					    	</div>
+				    	</div>
+					</c:forEach>
+			    	<input type="submit" value="Votar" class="btn btn-default" />
+				</form>
+		  	</div>
+		</div>
+	</div>
 </body>
 </html>
