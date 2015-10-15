@@ -52,6 +52,7 @@ public class ListaCartaoVotoTest {
 		assertFalse(listaCartaoVoto.getCartoes().isEmpty());
 		List<Restaurante> restaurantes = listaCartaoVoto.buscaRestaurantes();
 		assertFalse(restaurantes.isEmpty());
+		listaCartaoVoto.removerCartaoVoto();
 		assertTrue(listaCartaoVoto.terminouRestaurantes());
 	}
 	

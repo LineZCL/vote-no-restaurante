@@ -5,6 +5,9 @@
 			<div class="panel-heading">Qual seu restaurante favorito?</div>
 		  	<div class="panel-body">
 		    	<form action="/votar" method="post" >
+		    		<c:if test="${mensagemErro != null && mensagemErro != ''}">
+		    			<div class="alert alert-danger" role="alert">${mensagemErro }</div>
+		    		</c:if>
 					<c:forEach items="${restauranteList}" var="restaurante">
 						<div class="opcRestaurantes">
 							<div class="input-group">

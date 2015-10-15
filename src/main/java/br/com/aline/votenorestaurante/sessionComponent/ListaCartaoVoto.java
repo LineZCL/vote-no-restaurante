@@ -41,10 +41,15 @@ public class ListaCartaoVoto implements Serializable {
 
 			restaurantes.add(cartao.getRestauranteA());
 			restaurantes.add(cartao.getRestauranteB());
-
-			cartoes.remove(cartao);
 		}
 		return restaurantes;
+	}
+	
+	public void removerCartaoVoto(){
+		if(!cartoes.isEmpty()){
+			CartaoVoto cartao = cartoes.get(0);
+			cartoes.remove(cartao); 
+		}
 	}
 
 	public Boolean terminouRestaurantes() {

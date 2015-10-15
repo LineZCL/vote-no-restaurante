@@ -23,13 +23,15 @@ public class RankingController {
 		this.result = result; 
 	}
 	
+	/**
+     * @deprecated CDI eyes only
+     */
 	public RankingController()
 	{
 		this(null, null);
 	}
 	
 	public List<Ranking> rankingRestaurantes(Long usuarioId){
-		
 		result.include("usuarioId", usuarioId);
 		return rankingDao.lista(Ranking.class); 
 	}

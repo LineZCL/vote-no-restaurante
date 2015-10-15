@@ -41,6 +41,9 @@ public class VotacaoController {
 		this.result = result;
 	}
 
+	/**
+     * @deprecated CDI eyes only
+     */
 	public VotacaoController() {
 		this(null, null, null, null, null, null);
 	}
@@ -61,6 +64,7 @@ public class VotacaoController {
 					Restaurante.class, restauranteId);
 			if (restaurante != null) {
 				listaRankingUsuario.adicionaVoto(restaurante);
+				cartoesVotos.removerCartaoVoto();
 				if (cartoesVotos.terminouRestaurantes()) {
 					result.redirectTo(this).newUser();
 				}
@@ -70,6 +74,7 @@ public class VotacaoController {
 			}
 		}
 		else{
+			result.include("mensagemErro", "Você precisa escolher uma opção");
 			result.redirectTo(this).index();
 		}
 		
