@@ -4,9 +4,9 @@
 
 ##Suposição
 	
-** Os restaurantes estarão cadastrados. 
-** Você consegue ver o ranking geral ou apenas o seu. 
-** Não é possivel votar novamente com o mesmo cadastro.
+* Os restaurantes estarão cadastrados. 
+* Você consegue ver o ranking geral ou apenas o seu. 
+* Não é possivel votar novamente com o mesmo cadastro.
 
 ##Ambiente
 
@@ -20,6 +20,6 @@
 
 ##Melhorias para o futuro
 
-** Criar admin para visualizar os dados dos usuários.
+* Criar admin para visualizar os dados dos usuários.
 
-** Acrescentar gráficos para o ranking.
+* Acrescentar gráficos para o ranking.
